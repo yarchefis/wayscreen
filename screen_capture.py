@@ -14,7 +14,7 @@ class ScreenCaptureApp:
 
     def load_save_path(self):
         try:
-            with open("setting.conf", "r") as f:
+            with open("/bin/wayscreen-setting.conf", "r") as f:
                 return f.read().strip()
         except FileNotFoundError:
             return None
@@ -23,7 +23,7 @@ class ScreenCaptureApp:
             return None
 
     def save_save_path(self, save_path):
-        with open("setting.conf", "w") as f:
+        with open("/bin/wayscreen-setting.conf", "w") as f:
             f.write(save_path)
 
     def show_save_path_dialog(self):
