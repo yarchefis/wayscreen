@@ -1,10 +1,22 @@
 #!/bin/bash
 
+# Check package manager and install pip accordingly
+if command -v apt &> /dev/null; then
+    sudo apt update
+    sudo apt install -y python3-pip
+elif command -v pacman &> /dev/null; then
+    sudo pacman -Sy
+    sudo pacman -S --noconfirm python-pip
+else
+    echo "Error: Unsupported package manager"
+    exit 1
+fi
+
+mkdir download-wayscreen
 mv wayscreen/* download-wayscreen/
 
 python3 -m venv src/download-wayscreen
 source download-wayscreen/bin/activate
-
 
 pip install pyinstaller pyscreenshot pillow
 PYINSTALLER_PATH=$(which pyinstaller)
@@ -28,5 +40,5 @@ elif command -v doas &> /dev/null; then
     doas rm -rf download-wayscreen
     doas rm -rf wayscreen
 else
-    echo "there was an error installing the program in /bin. Make sure you have sudo or doas"
+    echo "There was an error installing the program in /bin. Make sure you have sudo or doas"
 fi
