@@ -3,10 +3,10 @@
 # Check package manager and install pip accordingly
 if command -v apt &> /dev/null; then
     sudo apt update
-    sudo apt install -y python3-pip
+    sudo apt install -y python3-pip python3-tk python3-pil
 elif command -v pacman &> /dev/null; then
     sudo pacman -Sy
-    sudo pacman -S --noconfirm python-pip
+    sudo pacman -S --noconfirm python-pip tk python-pillow
 else
     echo "Error: Unsupported package manager"
     exit 1
