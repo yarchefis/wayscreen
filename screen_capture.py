@@ -13,17 +13,14 @@ class ScreenCaptureApp:
         self.save_path = self.load_save_path()
 
     def load_save_path(self):
-    try:
-        with open(".config/wayscreen-setting.conf", "r") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        # Create the .config directory if it doesn't exist
-        os.makedirs(".config", exist_ok=True)
-        return None
-    except Exception as e:
-        print(f"Error while loading save path: {e}")
-        return None
-
+        try:
+            with open(".config/wayscreen-setting.conf", "r") as f:
+                return f.read().strip()
+        except FileNotFoundError:
+            return None
+        except Exception as e:
+            print(f"Error while loading save path: {e}")
+            return None
 
     def save_save_path(self, save_path):
         with open(".config/wayscreen-setting.conf", "w") as f:
