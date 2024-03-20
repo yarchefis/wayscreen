@@ -17,7 +17,7 @@ mkdir download-wayscreen
 python3 -m venv download-wayscreen
 source download-wayscreen/bin/activate
 
-mv wayscreen/* download-wayscreen/
+mv area_capture.py full_capture.py main.py screen_capture.py download-wayscreen/
 
 
 
