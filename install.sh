@@ -27,21 +27,19 @@ cd download-wayscreen || exit
 "$PYINSTALLER_PATH" --onefile main.py
 
 cd dist || exit
-mv main wayscreen
-chmod +x wayscreen
+chmod +x main
+echo "main in place. I issue right"
 
 if command -v sudo &> /dev/null; then
-    sudo cp wayscreen /bin/
+    sudo cp main /bin/
+    sudo mv /bin/main /bin/wayscreen
     echo "The program has been successfully installed! Thank you for choosing us, more cool projects on the website https://yarchefis.ru"
     deactivate
-    sudo rm -rf download-wayscreen
-    sudo rm -rf wayscreen
 elif command -v doas &> /dev/null; then
-    doas cp wayscreen /bin/
+    doas cp main /bin/
+    doas mv /bin/main /bin/wayscreen
     echo "The program has been successfully installed! Thank you for choosing us, more cool projects on the website https://yarchefis.ru"
     deactivate
-    doas rm -rf download-wayscreen
-    doas rm -rf wayscreen
 else
     echo "There was an error installing the program in /bin. Make sure you have sudo or doas"
 fi
