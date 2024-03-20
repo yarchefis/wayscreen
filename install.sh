@@ -13,14 +13,17 @@ else
 fi
 
 mkdir download-wayscreen
+
+python3 -m venv download-wayscreen
+source download-wayscreen/bin/activate
+
 mv wayscreen/* download-wayscreen/
 
-python3 -m venv src/download-wayscreen
-source download-wayscreen/bin/activate
+
 
 pip install pyinstaller pyscreenshot pillow
 PYINSTALLER_PATH=$(which pyinstaller)
-cd src/download-wayscreen || exit
+cd download-wayscreen || exit
 "$PYINSTALLER_PATH" --onefile main.py
 
 cd dist || exit
