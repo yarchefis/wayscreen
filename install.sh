@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone https://github.com/yarchefis/wayscreen
+
 python3 -m venv download-wayscreen
 source download-wayscreen/bin/activate
 mv wayscreen/* download-wayscreen/
