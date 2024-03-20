@@ -1,20 +1,21 @@
-# screen_capture_app.py
-
-from tkinter import Tk, Canvas, filedialog, messagebox
-from datetime import datetime
 import os
 import sys
-import time
+from tkinter import Tk, filedialog, messagebox
 from full_capture import FullCapture
 from area_capture import AreaCapture
 
 class ScreenCaptureApp:
+    CONFIG_FOLDER = os.path.expanduser("~/.config")
+    
     def __init__(self):
         self.save_path = self.load_save_path()
 
     def load_save_path(self):
         try:
-            with open(".config/wayscreen-setting.conf", "r") as f:
+            if not os.path.exists(self.CONFIG_FOLDER):
+                os.makedirs(self.CONFIG_FOLDER)  # создаем папку, если она не существует
+            config_file_path = os.path.join(self.CONFIG_FOLDER, "wayscreen-setting.conf")
+            with open(config_file_path, "r") as f:
                 return f.read().strip()
         except FileNotFoundError:
             return None
@@ -23,8 +24,14 @@ class ScreenCaptureApp:
             return None
 
     def save_save_path(self, save_path):
-        with open(".config/wayscreen-setting.conf", "w") as f:
-            f.write(save_path)
+        try:
+            if not os.path.exists(self.CONFIG_FOLDER):
+                os.makedirs(self.CONFIG_FOLDER)  # создаем папку, если она не существует
+            config_file_path = os.path.join(self.CONFIG_FOLDER, "wayscreen-setting.conf")
+            with open(config_file_path, "w") as f:
+                f.write(save_path)
+        except Exception as e:
+            print(f"Error while saving save path: {e}")
 
     def show_save_path_dialog(self):
         self.root = Tk()
@@ -49,3 +56,7 @@ class ScreenCaptureApp:
                 print("Invalid command line argument. Use 'area', 'full' or 'path'.")
         else:
             messagebox.showinfo("Settings", "Run the program with the 'path' parameter to specify the path. For example, 'wayscreen path'.")
+
+if __name__ == "__main__":
+    app = ScreenCaptureApp()
+    app.main()
