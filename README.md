@@ -22,7 +22,4 @@ run `chmod +x install.sh`
 run `./install.sh` and wait with a cup of tea
 after installation you can use `wayscreen`
 
-### windows may not work! the code is written for Linux:
-clone the repository. Install the necessary packages (python3, pip, pillow, tkinter, pyinstaller)
-run `pyinstaller --onefile main.py`
-your exe will be in the `dist` folder
+### windows not work! the code is written for Linux
