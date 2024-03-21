@@ -15,11 +15,15 @@ program website (Russian) - https://yarchefis.ru/wayscreen
 - wayscreen area - take a screenshot of the area
 
 ## install
-### debian/ubuntu and Arch Linux/Manjaro:
+### debian/ubuntu :
 clone the repository
 go to folder
 run `chmod +x install.sh`
 run `./install.sh` and wait with a cup of tea
 after installation you can use `wayscreen`
+
+### Arch Linux/Manjaro:
+available in aur
+can be installed for example via yay: `yay -S wayscreen`
 
 ### windows not work! the code is written for Linux
