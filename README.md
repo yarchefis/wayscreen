@@ -23,7 +23,7 @@ run `./install.sh` and wait with a cup of tea
 after installation you can use `wayscreen`
 
 ### Arch Linux/Manjaro:
-available in aur
+available in aur https://aur.archlinux.org/packages/wayscreen    
 can be installed for example via yay: `yay -S wayscreen`
 
 ### windows not work! the code is written for Linux
