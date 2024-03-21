@@ -4,7 +4,7 @@ import sys
 from screen_capture import ScreenCaptureApp
 from tkinter import Tk, Label, Button
 
-def specify_path():
+def specify_path(app):  # Принимаем переменную app в качестве аргумента
     app.show_save_path_dialog()
 
 if __name__ == "__main__":
@@ -26,7 +26,7 @@ if __name__ == "__main__":
         label.pack()
 
         # Button to specify screenshot path
-        path_button = Button(root, text="Specify Screenshot Path", command=specify_path)
+        path_button = Button(root, text="Specify Screenshot Path", command=lambda: specify_path(app))  # Передаем app в lambda функцию
         path_button.pack()
 
         # English description
